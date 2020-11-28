@@ -1,0 +1,22 @@
+{
+    "name": "delboy1978uk/bone-address",
+    "description": "Address package for Bone Framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Derek Stephen McLean",
+            "email": "delboy1978uk@gmail.com"
+        }
+    ],
+    "require": {
+        "delboy1978uk/bone": "^3.9.5"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bone\\Address\\": "src/"
+        }
+    }
+}
