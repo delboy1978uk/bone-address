@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bone\Address\Form;
 
 use Bone\User\Form\Transformer\CountryTransformer;
+use Del\Form\Field\Hidden;
 use Del\Form\Field\Select;
 use Del\Form\Field\Text;
 use Del\Form\FormInterface;
@@ -47,11 +48,11 @@ trait AddressFormTrait
         }
         $form->addField($country);
 
-        $lat = new Text('lat');
+        $lat = new Hidden('lat');
         $lat->setLabel('Latitude');
         $form->addField($lat);
 
-        $lng = new Text('lng');
+        $lng = new Hidden('lng');
         $lng->setLabel('Longitude');
         $form->addField($lng);
     }
