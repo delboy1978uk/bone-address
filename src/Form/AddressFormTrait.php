@@ -49,11 +49,9 @@ trait AddressFormTrait
         $form->addField($country);
 
         $lat = new Hidden('lat');
-        $lat->setLabel('Latitude');
         $form->addField($lat);
 
         $lng = new Hidden('lng');
-        $lng->setLabel('Longitude');
         $form->addField($lng);
     }
 }
