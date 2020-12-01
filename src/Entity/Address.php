@@ -72,7 +72,7 @@ class Address implements JsonSerializable
     /**
      * @var Person $person
      * @ORM\ManyToOne(targetEntity="Del\Person\Entity\Person")
-     * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="person", referencedColumnName="id")
      */
     private $person;
 
