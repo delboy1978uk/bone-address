@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bone\Address\Entity;
 
+use Del\Person\Entity\Person;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 
@@ -69,8 +70,9 @@ class Address implements JsonSerializable
     private $lng;
 
     /**
-     * @var int $person
-     * @ORM\Column(type="integer", length=11, nullable=true)
+     * @var Person $person
+     * @ORM\ManyToOne(targetEntity="Del\Person\Entity\Person")
+     * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
      */
     private $person;
 
@@ -219,17 +221,17 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @return int
+     * @return Person
      */
-    public function getPerson(): ?int
+    public function getPerson(): Person
     {
         return $this->person;
     }
 
     /**
-     * @param int|null $person
+     * @param Person $person
      */
-    public function setPerson(?int $person): void
+    public function setPerson(Person $person): void
     {
         $this->person = $person;
     }

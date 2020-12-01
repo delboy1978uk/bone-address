@@ -49,7 +49,7 @@ class AddressService
         isset($data['country']) ? $address->setCountry($data['country']) : $address->setCountry('');
         !empty($data['lat']) ? $address->setLat($data['lat']) : $address->setLat(null);
         !empty($data['lng']) ? $address->setLng($data['lng']) : $address->setLng(null);
-        !empty($data['person']) ? $address->setPerson((int) $data['person']) : null;
+        !empty($data['person']) ? $address->setPerson($data['person']) : null;
 
         return $address;
     }
