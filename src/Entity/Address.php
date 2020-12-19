@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Bone\Address\Entity;
 
+use Del\Entity\Country;
 use Del\Person\Entity\Person;
+use Del\Traits\HasCountryTrait;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 
@@ -51,11 +53,7 @@ class Address implements JsonSerializable
      */
     private $postcode;
 
-    /**
-     * @var string $country
-     * @ORM\Column(type="string", length=3, nullable=false)
-     */
-    private $country;
+    use HasCountryTrait;
 
     /**
      * @var float $lat
@@ -70,9 +68,9 @@ class Address implements JsonSerializable
     private $lng;
 
     /**
-     * @var Person $person
+     * @var ?Person $person
      * @ORM\ManyToOne(targetEntity="Del\Person\Entity\Person")
-     * @ORM\JoinColumn(name="person", referencedColumnName="id")
+     * @ORM\JoinColumn(name="person", referencedColumnName="id", nullable=true)
      */
     private $person;
 
@@ -173,22 +171,6 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @return string
-     */
-    public function getCountry(): string
-    {
-        return $this->country;
-    }
-
-    /**
-     * @param string $country
-     */
-    public function setCountry(string $country): void
-    {
-        $this->country = $country;
-    }
-
-    /**
      * @return float
      */
     public function getLat(): ?float
@@ -221,9 +203,9 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @return Person
+     * @return ?Person
      */
-    public function getPerson(): Person
+    public function getPerson(): ?Person
     {
         return $this->person;
     }

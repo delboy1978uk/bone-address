@@ -7,6 +7,7 @@ namespace Bone\Address\Service;
 use Bone\Address\Entity\Address;
 use Bone\Address\Repository\AddressRepository;
 use DateTime;
+use Del\Factory\CountryFactory;
 use Doctrine\ORM\EntityManager;
 
 class AddressService
@@ -46,7 +47,7 @@ class AddressService
         isset($data['add3']) ? $address->setAdd3($data['add3']) : $address->setAdd3(null);
         isset($data['city']) ? $address->setCity($data['city']) : $address->setCity('');
         isset($data['postcode']) ? $address->setPostcode($data['postcode']) : $address->setPostcode('');
-        isset($data['country']) ? $address->setCountry($data['country']) : $address->setCountry('');
+        isset($data['country']) ? $address->setCountry(CountryFactory::generate($data['country'])) : null;
         !empty($data['lat']) ? $address->setLat($data['lat']) : $address->setLat(null);
         !empty($data['lng']) ? $address->setLng($data['lng']) : $address->setLng(null);
         !empty($data['person']) ? $address->setPerson($data['person']) : null;

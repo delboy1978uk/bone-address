@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "delboy1978uk/bone": "^3.9.5"
+        "delboy1978uk/bone": "^3.9.5",
+        "delboy1978uk/bone-country": "^2.3"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"

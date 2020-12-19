@@ -27,3 +27,12 @@ bone migrant:diff
 bone migrant:migrate
 bone migrant:generate-proxies
 ```
+### admin routes
+You can access `/admin/address` to get SessionAuth protected CRUD pages. We will make these routes able to be 
+enabled/disabled in a future release.
+
+`setCountry(Country $country)` now takes a Country object as of v2.0.0.  You can create a Country object by passing in 
+the ISO code:
+```php
+$country = CountryFactory::generate('GB');
+```

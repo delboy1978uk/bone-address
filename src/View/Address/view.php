@@ -37,7 +37,7 @@ use Del\Icon;
                                 <?= $address->getAdd2() ? '<br>' . $address->getAdd2() : '' ?>
                                 <?= $address->getAdd3() ? '<br>' . $address->getAdd3() : '' ?><br>
                                 <?= $address->getCity() . ' ' . $address->getPostcode() ?><br>
-                                <?= $address->getCountry() ?>
+                                <?= $address->getCountry()->getName() ?>
                             </p>
                         </div>
                     </div>
