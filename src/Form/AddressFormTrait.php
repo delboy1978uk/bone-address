@@ -18,6 +18,7 @@ trait AddressFormTrait
         $add1 = new Text('add1');
         $add1->setLabel('Address');
         $add1->setRequired(true);
+        $add1->setPlaceholder('Address');
         $form->addField($add1);
 
         $add2 = new Text('add2');
@@ -29,11 +30,13 @@ trait AddressFormTrait
         $city = new Text('city');
         $city->setLabel('City');
         $city->setRequired(true);
+        $city->setPlaceholder('City');
         $form->addField($city);
 
         $postcode = new Text('postcode');
         $postcode->setLabel('Postcode');
         $postcode->setRequired(true);
+        $city->setPlaceholder('Postcode');
         $form->addField($postcode);
 
         $country = new Select('country');
@@ -43,9 +46,11 @@ trait AddressFormTrait
         $countryRepository = new CountryRepository();
         $countries = $countryRepository->findAllCountries();
         $country->setOption('', '');
+
         foreach ($countries as $c) {
             $country->setOption($c->getIso(), $c->getName());
         }
+        
         $form->addField($country);
 
         $lat = new Hidden('lat');
