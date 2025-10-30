@@ -10,24 +10,24 @@ use Barnacle\RegistrationInterface;
 use Bone\Address\Controller\AddressApiController;
 use Bone\Address\Controller\AddressController;
 use Bone\Address\Service\AddressService;
+use Bone\Contracts\Container\AdminPanelProviderInterface;
 use Bone\Controller\Init;
 use Bone\Http\Middleware\HalCollection;
 use Bone\Http\Middleware\HalEntity;
 use Bone\Router\Router;
 use Bone\Router\RouterConfigInterface;
 use Bone\User\Http\Middleware\SessionAuth;
+use Bone\View\Util\AdminLink;
 use Bone\View\ViewRegistrationInterface;
 use Doctrine\ORM\EntityManager;
 use Laminas\Diactoros\ResponseFactory;
 use League\Route\RouteGroup;
 use League\Route\Strategy\JsonStrategy;
 
-class AddressPackage implements RegistrationInterface, RouterConfigInterface, EntityRegistrationInterface, ViewRegistrationInterface
+class AddressPackage implements RegistrationInterface, RouterConfigInterface, EntityRegistrationInterface,
+                                ViewRegistrationInterface, AdminPanelProviderInterface
 {
-    /**
-     * @param Container $c
-     */
-    public function addToContainer(Container $c)
+    public function addToContainer(Container $c): void
     {
         $c[AddressService::class] = $c->factory(function (Container $c) {
             $em =  $c->get(EntityManager::class);
@@ -48,36 +48,21 @@ class AddressPackage implements RegistrationInterface, RouterConfigInterface, En
         });
     }
 
-    /**
-     * @return array
-     */
     public function addViews(): array
     {
         return ['address' => __DIR__ . '/View/Address'];
     }
 
-    /**
-     * @param Container $c
-     * @return array
-     */
     public function addViewExtensions(Container $c): array
     {
         return [];
     }
 
-    /**
-     * @return string
-     */
     public function getEntityPath(): string
     {
         return __DIR__ . '/Entity';
     }
 
-    /**
-     * @param Container $c
-     * @param Router $router
-     * @return Router
-     */
     public function addRoutes(Container $c, Router $router): Router
     {
         $auth = $c->get(SessionAuth::class);
@@ -107,5 +92,12 @@ class AddressPackage implements RegistrationInterface, RouterConfigInterface, En
         ->setStrategy($strategy);
 
         return $router;
+    }
+
+    public function getAdminLinks(): array
+    {
+        return [
+            new AdminLink('Addresses', '/admin/addresses', 'nav-icon fa fa-globe'),
+        ];
     }
 }

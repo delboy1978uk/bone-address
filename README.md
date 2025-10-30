@@ -1,5 +1,5 @@
 # address
-Address package for Bone Mvc Framework
+Address package for Bone Framework
 ## installation
 Use Composer
 ```
