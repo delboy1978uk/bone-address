@@ -11,11 +11,7 @@ use LogicException;
 
 class AddressCollection extends ArrayCollection implements JsonSerializable
 {
-    /**
-     * @param Address $address
-     * @return $this
-     * @throws LogicException
-     */
+    /** @throws LogicException  */
     public function update(Address $address): AddressCollection
     {
         $key = $this->findKey($address);
@@ -29,26 +25,16 @@ class AddressCollection extends ArrayCollection implements JsonSerializable
         throw new LogicException('Address was not in the collection.');
     }
 
-    /**
-     * @param Address $address
-     */
     public function append(Address $address): void
     {
         $this->add($address);
     }
 
-    /**
-     * @return Address|null
-     */
     public function current(): ?Address
     {
         return parent::current();
     }
 
-    /**
-     * @param Address $address
-     * @return int|null
-     */
     public function findKey(Address $address): ?int
     {
         $it = $this->getIterator();
@@ -66,10 +52,6 @@ class AddressCollection extends ArrayCollection implements JsonSerializable
         return null;
     }
 
-    /**
-     * @param int $id
-     * @return Address|null
-     */
     public function findById(int $id): ?Address
     {
         $it = $this->getIterator();
@@ -87,9 +69,6 @@ class AddressCollection extends ArrayCollection implements JsonSerializable
         return null;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         $collection = [];
@@ -106,17 +85,11 @@ class AddressCollection extends ArrayCollection implements JsonSerializable
         return $collection;
     }
 
-    /**
-     * @return string
-     */
     public function jsonSerialize(): string
     {
         return \json_encode($this->toArray());
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return $this->jsonSerialize();

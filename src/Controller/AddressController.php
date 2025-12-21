@@ -18,32 +18,20 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class AddressController extends Controller
 {
-    /** @var int $numPerPage */
-    private $numPerPage = 10;
+    private int $numPerPage = 10;
 
-    /** @var Paginator $paginator */
-    private $paginator;
+    private Paginator $paginator;
 
-    /** @var AddressService $service */
-    private $service;
+    private AddressService $service;
 
-    /** @var string $layout */
-    private $layout = 'layouts::admin';
+    private string $layout = 'layouts::admin';
 
-    /**
-     * @param AddressService $service
-     */
     public function __construct(AddressService $service)
     {
         $this->paginator = new Paginator();
         $this->service = $service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface $response
-     * @throws \Exception
-     */
     public function index(ServerRequestInterface $request): ResponseInterface
     {
         $db = $this->service->getRepository();
@@ -63,11 +51,6 @@ class AddressController extends Controller
         return new LayoutResponse($body, $this->layout);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface $response
-     * @throws \Exception
-     */
     public function view(ServerRequestInterface $request): ResponseInterface
     {
         $db = $this->service->getRepository();
@@ -80,11 +63,7 @@ class AddressController extends Controller
         return new LayoutResponse($body, $this->layout);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface $response
-     * @throws \Exception
-     */
+
     public function create(ServerRequestInterface $request): ResponseInterface
     {
         $msg = '';
@@ -115,11 +94,6 @@ class AddressController extends Controller
         return new LayoutResponse($body, $this->layout);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface $response
-     * @throws \Exception
-     */
     public function edit(ServerRequestInterface $request): ResponseInterface
     {
         $msg = '';
@@ -153,11 +127,6 @@ class AddressController extends Controller
         return new LayoutResponse($body, $this->layout);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface $response
-     * @throws \Exception
-     */
     public function delete(ServerRequestInterface $request): ResponseInterface
     {
         $id = $request->getAttribute('id');
@@ -191,11 +160,6 @@ class AddressController extends Controller
         return new LayoutResponse($body, $this->layout);
     }
 
-    /**
-     * @param string $message
-     * @param string $class
-     * @return string
-     */
     private function alertBox(string $message, string $class): string
     {
         $helper = new AlertBox();

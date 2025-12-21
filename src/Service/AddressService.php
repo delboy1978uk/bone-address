@@ -6,27 +6,18 @@ namespace Bone\Address\Service;
 
 use Bone\Address\Entity\Address;
 use Bone\Address\Repository\AddressRepository;
-use DateTime;
 use Del\Factory\CountryFactory;
 use Doctrine\ORM\EntityManager;
 
 class AddressService
 {
-    /** @var EntityManager $em */
-    private $em;
+    private EntityManager $em;
 
-    /**
-     * @param EntityManager $em
-     */
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
     }
 
-    /**
-     * @param array $data
-     * @return Address
-     */
     public function createFromArray(array $data): Address
     {
         $address = new Address();
@@ -34,11 +25,6 @@ class AddressService
         return $this->updateFromArray($address, $data);
     }
 
-    /**
-     * @param Address $address
-     * @param array $data
-     * @return Address
-     */
     public function updateFromArray(Address $address, array $data): Address
     {
         isset($data['id']) ? $address->setId($data['id']) : null;
@@ -55,30 +41,16 @@ class AddressService
         return $address;
     }
 
-    /**
-     * @param Address $address
-     * @return Address
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     */
     public function saveAddress(Address $address): Address
     {
         return $this->getRepository()->save($address);
     }
 
-    /**
-     * @param Address $address
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     */
     public function deleteAddress(Address $address): void
     {
         $this->getRepository()->delete($address);
     }
 
-    /**
-     * @return AddressRepository
-     */
     public function getRepository(): AddressRepository
     {
         /** @var AddressRepository $repository */

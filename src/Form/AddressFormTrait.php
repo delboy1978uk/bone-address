@@ -50,7 +50,7 @@ trait AddressFormTrait
         foreach ($countries as $c) {
             $country->setOption($c->getIso(), $c->getName());
         }
-        
+
         $form->addField($country);
 
         $lat = new Hidden('lat');

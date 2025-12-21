@@ -9,12 +9,12 @@
         }
     ],
     "require": {
-        "boneframework/bone": "^v3.12",
-        "boneframework/contracts": "^v1.6",
+        "delboy1978uk/bone-doctrine": "^v2.14",
+        "boneframework/contracts": "^v1.7",
         "delboy1978uk/country": "^v2.5"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {

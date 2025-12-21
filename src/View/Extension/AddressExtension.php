@@ -13,10 +13,6 @@ class AddressExtension implements ExtensionInterface
         $engine->registerFunction('address', [$this, 'address']);
     }
 
-    /**
-     * @param Address $address
-     * @return string
-     */
     public function address(Address $address): string
     {
         $html = $address->getAdd1();

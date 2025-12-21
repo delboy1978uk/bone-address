@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Bone\Address;
 
 use Barnacle\Container;
-use Barnacle\EntityRegistrationInterface;
 use Barnacle\RegistrationInterface;
 use Bone\Address\Controller\AddressApiController;
 use Bone\Address\Controller\AddressController;
 use Bone\Address\Service\AddressService;
+use Bone\Address\View\Extension\AddressExtension;
 use Bone\Contracts\Container\AdminPanelProviderInterface;
+use Bone\Contracts\Container\EntityRegistrationInterface;
 use Bone\Controller\Init;
 use Bone\Http\Middleware\HalCollection;
 use Bone\Http\Middleware\HalEntity;
@@ -55,7 +56,9 @@ class AddressPackage implements RegistrationInterface, RouterConfigInterface, En
 
     public function addViewExtensions(Container $c): array
     {
-        return [];
+        return [
+            new AddressExtension()
+        ];
     }
 
     public function getEntityPath(): string
