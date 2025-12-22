@@ -34,8 +34,8 @@ class AddressService
         isset($data['city']) ? $address->setCity($data['city']) : $address->setCity('');
         isset($data['postcode']) ? $address->setPostcode($data['postcode']) : $address->setPostcode('');
         isset($data['country']) ? $address->setCountry(CountryFactory::generate($data['country'])) : null;
-        !empty($data['lat']) ? $address->setLat($data['lat']) : $address->setLat(null);
-        !empty($data['lng']) ? $address->setLng($data['lng']) : $address->setLng(null);
+        !empty($data['latitude']) ? $address->setLatitude($data['latitude']) : $address->setLatitude(0);
+        !empty($data['longitude']) ? $address->setLongitude($data['longitude']) : $address->setLongitude(0);
         !empty($data['person']) ? $address->setPerson($data['person']) : null;
 
         return $address;

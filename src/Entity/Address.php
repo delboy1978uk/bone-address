@@ -98,8 +98,8 @@ class Address implements JsonSerializable
             'city' => $this->getCity(),
             'postcode' => $this->getPostcode(),
             'country' => $this->getCountry(),
-            'lat' => $this->getLatitude(),
-            'lng' => $this->getLongitude(),
+            'latitude' => $this->getLatitude(),
+            'longitude' => $this->getLongitude(),
             'person' => $this->getPerson(),
         ];
 
