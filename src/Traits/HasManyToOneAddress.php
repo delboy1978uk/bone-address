@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait HasManyToOneAddress
 {
-    #[ORM\ManyToOne(targetEntity: Address::class, inversedBy: 'addresses')]
+    #[ORM\ManyToOne(targetEntity: Address::class, inversedBy: 'addresses', cascade: ['persist'])]
     private Address $address;
 
     public function getAddress(): Address

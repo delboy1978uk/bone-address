@@ -7,7 +7,6 @@ namespace Bone\Address\Entity;
 use Bone\Address\Repository\AddressRepository;
 use Bone\BoneDoctrine\Traits\HasId;
 use Bone\BoneDoctrine\Traits\HasLocationCoordinates;
-use Del\Person\Entity\Person;
 use Del\Person\Traits\HasManyToOnePerson;
 use Del\Traits\HasCountryTrait;
 use Doctrine\ORM\Mapping as ORM;
