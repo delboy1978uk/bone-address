@@ -36,7 +36,7 @@ trait AddressFormTrait
         $postcode = new Text('postcode');
         $postcode->setLabel('Postcode');
         $postcode->setRequired(true);
-        $city->setPlaceholder('Postcode');
+        $postcode->setPlaceholder('Postcode');
         $form->addField($postcode);
 
         $country = new Select('country');
