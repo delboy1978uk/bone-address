@@ -8,6 +8,7 @@ use Bone\Address\Repository\AddressRepository;
 use Bone\BoneDoctrine\Traits\HasId;
 use Bone\BoneDoctrine\Traits\HasLocationCoordinates;
 use Del\Person\Traits\HasManyToOnePerson;
+use Del\Person\Traits\HasNullableManyToOnePerson;
 use Del\Traits\HasCountryTrait;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
@@ -35,7 +36,7 @@ class Address implements JsonSerializable
 
     use HasCountryTrait;
     use HasLocationCoordinates;
-    use HasManyToOnePerson;
+    use HasNullableManyToOnePerson;
 
     public function getAdd1(): string
     {
